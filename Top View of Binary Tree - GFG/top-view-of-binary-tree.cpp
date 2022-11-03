@@ -106,7 +106,7 @@ class Solution
     {
         //Your code here
         vector<int> ans;
-        if(root == NULL)
+        if(!root)
             return ans;
         map<int, int> mp; // (line, node)
         queue<pair<Node*, int>> q; // {node_val, line}

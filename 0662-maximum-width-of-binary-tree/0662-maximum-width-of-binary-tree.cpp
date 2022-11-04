@@ -16,7 +16,8 @@ public:
             return 0;
         int ans = 0;
         queue<pair<TreeNode*, int>> q;
-        
+        // TC -O(N)
+        // SC -O(N)
         q.push({root, 0});
         
         while(!q.empty()){

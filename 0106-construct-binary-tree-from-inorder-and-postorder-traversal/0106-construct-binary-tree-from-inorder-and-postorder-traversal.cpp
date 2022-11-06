@@ -30,7 +30,7 @@ public:
         root->left = build(i, inroot-1,idx, inorder, postorder, mp);
         
         return root;
-
+        // Tc --> O(N) [tree tarversal] x O(N) [for the hashmap]
     }
     
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {

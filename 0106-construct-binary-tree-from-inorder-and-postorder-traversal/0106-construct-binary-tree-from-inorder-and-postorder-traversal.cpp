@@ -31,6 +31,7 @@ public:
         
         return root;
         // Tc --> O(N) [tree tarversal] x O(N) [for the hashmap]
+        // Sc --> O(N) [for the hashmap] + O(N) [ for the stack space]
     }
     
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {

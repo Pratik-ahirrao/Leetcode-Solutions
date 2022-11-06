@@ -23,9 +23,10 @@ public:
         if(i == j)
             return root;
         int inroot = mp[root->val];
-                root->right = build(inroot+1, j, idx,inorder, postorder, mp);
-        // if(root->right == NULL)
-        //   idx++;
+        // we recursively call for the right subtree before the left subtree 
+        //as we decrease the index of the postorder index whenever we create a new node. 
+        root->right = build(inroot+1, j, idx,inorder, postorder, mp);
+       
         root->left = build(i, inroot-1,idx, inorder, postorder, mp);
         
         return root;

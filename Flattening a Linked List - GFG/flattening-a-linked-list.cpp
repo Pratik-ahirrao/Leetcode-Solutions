@@ -132,6 +132,11 @@ Node* merge(Node* l1, Node* l2){
     if(l1) dummy->bottom = l1;
     if(l2) dummy->bottom = l2;
     return temp->bottom;
+    
+
+   
+    
+    
 }
 Node *flatten(Node *root)
 {

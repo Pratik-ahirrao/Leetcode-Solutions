@@ -143,7 +143,14 @@ Node *flatten(Node *root)
    // Your code here
    if(!root) return root;
    
-   return merge(root, flatten(root->next));
+//   return merge(root, flatten(root->next));
+while(root && root->next)
+{
+   Node* temp = root->next->next;
+   root = merge(root, root->next);
+   root->next = temp;
+}
+return root;
    
 }
 

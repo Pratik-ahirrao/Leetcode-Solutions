@@ -3,6 +3,8 @@
 using namespace std;
 
 // } Driver Code Ends
+
+#define pp pair<int, int>
 class Solution
 {
 	public:
@@ -11,28 +13,28 @@ class Solution
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
     {
         // Code here
-        priority_queue<pair<int, int>, vector<pair<int, int>> , greater<pair<int, int>>> pq;
-        
+        priority_queue<pp, vector<pp>, greater<pp>> pq;
         vector<int> dist(V, 1e9);
-        dist[S] = 0;
         
+        dist[S] = 0;
         pq.push({0, S});
         
         while(!pq.empty()){
-            int distance = pq.top().first;
-            int curr_node = pq.top().second;
-            
+            int d = pq.top().first;
+            int node = pq.top().second;
             pq.pop();
             
-            for(auto it: adj[curr_node]){
-                int edge_wt = it[1];
-                int adj_node = it[0];
-                if(dist[adj_node] > edge_wt + distance){
-                    dist[adj_node] = edge_wt + distance;
-                    pq.push({dist[adj_node], adj_node});
+            for(auto it: adj[node]){
+                int wt = it[1];
+                int adjNode = it[0];
+                
+                if(d + wt < dist[adjNode]){
+                    dist[adjNode] = d + wt;
+                    pq.push({dist[adjNode], adjNode});
                 }
             }
         }
+        
         return dist;
     }
 };

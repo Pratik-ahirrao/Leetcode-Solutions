@@ -22,13 +22,29 @@ class Solution {
         return dp[idx][sum] = pick + notPick;
     }
   public:
-    long long int count(int coins[], int N, int sum) {
+    long long int count(int coins[], int n, int sum) {
 
         // code here.
-        vector<vector<long long int>> dp(N, vector<long long int>(sum+1, -1));
-        return solve(coins, sum, 0, N, dp);
+        // vector<vector<long long int>> dp(N, vector<long long int>(sum+1, -1));
+        // return solve(coins, sum, 0, N, dp);
         
-        vector<vector<long 
+        vector<vector<long long int>> dp(n+1, vector<long long int>(sum+1, 0));
+        
+        for(int i = 0;i < n;i++) dp[i][0] = 1;
+        
+        for(int i = n - 1;i >= 0;i--){
+            for(int amt = 1;amt <= sum;amt++){
+                long long int notPick = dp[i+1][amt];//solve(coins, sum, idx+1, N, dp);
+                long long int pick = 0;
+        
+                if(amt - coins[i] >= 0)
+                    pick = dp[i][amt - coins[i]];//solve(coins, sum - coins[idx], idx, N, dp);
+            
+                dp[i][amt] = pick + notPick;
+            }
+        }
+        
+        return dp[0][sum];
     }
 };
 

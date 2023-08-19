@@ -20,19 +20,36 @@ public:
     string longestPalindrome(string S){
         // code here 
         int len = 0;
+        int low;
+        int high;
         int start = 0;
-        int end = 0;
         for(int i = 0;i < S.size();i++){
-            for(int j = i;j < S.size();j++){
-                if(solve(S, i, j)){
-                    if(len < (j - i + 1)){
-                        len = j - i + 1;
-                        start = i;
-                        end = j;
-                    }
+            
+            low = i - 1;
+            high = i;
+            
+            while(low >= 0 && high < S.size() && S[low] == S[high]){
+                if(len < high - low + 1){
+                    len = high - low + 1;
+                    start = low;
+                
                 }
+                low--;
+                high++;
+            }
+            
+            low = i - 1;
+            high = i + 1;
+            
+            while(low >= 0 && high < S.size() && S[low] == S[high]){
+                if(len < high - low + 1){
+                    len = high - low + 1;
+                start = low;}
+                low--;
+                high++;
             }
         }
+        if(len == 0) return S.substr(0, 1);
         return S.substr(start, len);
     }
 };
